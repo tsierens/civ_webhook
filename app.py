@@ -16,10 +16,10 @@ UNKNOWN = "unknown"
 message_format = "{}, you're up! Turn number {} in game {}!"
 FOURFELLOWS = "Four fellows"
 player_dictionary = {
-    "tadpole": "@tadpole#3755",
-    "ezzy.nin": "@EchoSEN#4393",
-    "AbyssMage": "@Tay#0001",
-    "The Wandering Mage": "@The Wandering Mage#9391"
+    "tadpole": "<@215701205710536706>",
+    "ezzy.nin": "<@208034224522002445>",
+    "AbyssMage": "<@173982451687751680>",
+    "The Wandering Mage": "<@215173275657961472>"
 }
 
 def send_to_discord(s):
