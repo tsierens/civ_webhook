@@ -36,7 +36,8 @@ def handle_webhook():
     civ_player_name = data.get(NAME, UNKNOWN)
     turn            = data.get(TURN, UNKNOWN)
     if UNKNOWN in [game_name, civ_player_name, turn]:
-        raise("Invalid data")
+        print "Invalid data"
+        return "Fail"
     player = player_dictionary.get(civ_player_name, civ_player_name)
     if game_name == FOURFELLOWS:
         send_to_discord(message_format.format(player, turn, game_name))
