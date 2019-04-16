@@ -28,7 +28,7 @@ def send_to_discord(s):
 def hi():
     return "<h1>Hi!!!</h1>"
     
-@app.route('process/', methods=['GET', 'POST'])
+@app.route('/process/', methods=['GET', 'POST'])
 def handle_webhook():
     data = request.get_json(force = True)
     game_name       = data.get(GAME, UNKNOWN)
