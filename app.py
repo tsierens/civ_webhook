@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import request
+import os
 import flask
 import requests
 
@@ -15,7 +16,7 @@ UNKNOWN = "unknown"
 message_format = "{}, you're up! Turn number {} in game {}!"
 FOURFELLOWS = "Four fellows"
 player_dictionary = {
-    "tadpole": "<@tadpole3755>",
+    "tadpole": "@tadpole#3755",
     "ezzy.nin": "<@tadpole3755>",
     "AbyssMage": "<@tadpole3755>",
     "The Wandering Mage": "<@tadpole3755>"
@@ -44,4 +45,5 @@ def handle_webhook():
     return "success"
 
 if __name__ == "__main__":
-    app.run()
+    port = print(os.environ.get('PATH', 5000))
+    app.run(port = port)
