@@ -17,9 +17,9 @@ message_format = "{}, you're up! Turn number {} in game {}!"
 FOURFELLOWS = "Four fellows"
 player_dictionary = {
     "tadpole": "@tadpole#3755",
-    "ezzy.nin": "<@tadpole3755>",
-    "AbyssMage": "<@tadpole3755>",
-    "The Wandering Mage": "<@tadpole3755>"
+    "ezzy.nin": "@EchoSEN#4393",
+    "AbyssMage": "@Tay#0001",
+    "The Wandering Mage": "@The Wandering Mage#9391"
 }
 
 def send_to_discord(s):
