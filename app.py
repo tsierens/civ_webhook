@@ -45,5 +45,5 @@ def handle_webhook():
     return "success"
 
 if __name__ == "__main__":
-    port = print(os.environ.get('PATH', 5000))
+    port = os.environ.get('PATH', 5000)
     app.run(port = port)
