@@ -9,6 +9,10 @@ FOUR_FELLOWS_WEBHOOK = (
     "https://discordapp.com/api/webhooks/566111782725484544/" + 
     "8Ns1BHjvdEpndbTRXfZ5RR1UqH4SEgszEPhQEEbCiwjfALPT2S9h5APA5lx9PN4WpVDm"
 )
+POND_WEBHOOK = (
+    "https://discordapp.com/api/webhooks/568096818685018143/" + 
+    "yFHEOELWfNhalc6_2hHIs6j9WOHwzWLWnjCJdpAxH7thH3Ej4PD8zHYL8Y_OeFbSFdex)"
+)
 GAME = "value1"
 NAME = "value2"
 TURN = "value3"
@@ -22,8 +26,8 @@ player_dictionary = {
     "The Wandering Mage": "<@215173275657961472>"
 }
 
-def send_to_discord(s):
-    requests.post(FOUR_FELLOWS_WEBHOOK, json = {"content": s})
+def send_to_discord(s, webhook):
+    requests.post(webhook, json = {"content": s})
     
 @app.route('/', methods = ['GET'])
 def hi():
@@ -40,9 +44,8 @@ def handle_webhook():
         return "Fail"
     player = player_dictionary.get(civ_player_name, civ_player_name)
     if game_name == FOURFELLOWS:
-        send_to_discord(message_format.format(player, turn, game_name))
-    else:
-        print message_format.format(player, turn, game_name)
+        send_to_discord(message_format.format(player, turn, game_name), FOUR_FELLOWS_WEBHOOK)
+    send_to_discord(message_format.format(player, turn, game_name), POND_WEBHOOK)
     return "success"
 
 if __name__ == "__main__":
