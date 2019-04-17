@@ -11,8 +11,9 @@ FOUR_FELLOWS_WEBHOOK = (
 )
 POND_WEBHOOK = (
     "https://discordapp.com/api/webhooks/568096818685018143/" + 
-    "yFHEOELWfNhalc6_2hHIs6j9WOHwzWLWnjCJdpAxH7thH3Ej4PD8zHYL8Y_OeFbSFdex)"
+    "yFHEOELWfNhalc6_2hHIs6j9WOHwzWLWnjCJdpAxH7thH3Ej4PD8zHYL8Y_OeFbSFdex"
 )
+
 GAME = "value1"
 NAME = "value2"
 TURN = "value3"
@@ -27,6 +28,7 @@ player_dictionary = {
 }
 
 def send_to_discord(s, webhook):
+    print "sending to discord"
     requests.post(webhook, json = {"content": s})
     
 @app.route('/', methods = ['GET'])
