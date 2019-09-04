@@ -3,6 +3,7 @@ from flask import request
 import os
 import flask
 import requests
+from player import Player
 
 app = Flask(__name__)
 FOUR_FELLOWS_WEBHOOK = (
@@ -21,15 +22,12 @@ UNKNOWN = "unknown"
 message_format = "{}, you're up! Turn number {} in game {}!"
 FOURFELLOWS = "Four fellows"
 player_dictionary = {
-    "tadpole": "<@215701205710536706>",
-    "ezzy.nin": "<@208034224522002445>",
-    "AbyssMage": "<@173982451687751680>",
-    "The Wandering Mage": "<@215173275657961472>"
+    "tadpole":            Player(discord_name = "<@215701205710536706>", discord_webhooks = [FOUR_FELLOWS_WEBHOOK, POND_WEBHOOK]),
+    "ezzy.nin":           Player(discord_name = "<@208034224522002445>", discord_webhooks = [FOUR_FELLOWS_WEBHOOK]),
+    "AbyssMage":          Player(discord_name = "<@173982451687751680>", discord_webhooks = [FOUR_FELLOWS_WEBHOOK]),
+    "The Wandering Mage": Player(discord_name = "<@215173275657961472>", discord_webhooks = [FOUR_FELLOWS_WEBHOOK, POND_WEBHOOK]),
+    "m3marsh":            Player(push_notification = "https://notify.run/5YudarIyaCzwVx9j")
 }
-
-def send_to_discord(s, webhook):
-    print "sending to discord"
-    requests.post(webhook, json = {"content": s})
     
 @app.route('/', methods = ['GET'])
 def hi():
@@ -44,10 +42,9 @@ def handle_webhook():
     if UNKNOWN in [game_name, civ_player_name, turn]:
         print "Invalid data"
         return "Fail"
-    player = player_dictionary.get(civ_player_name, civ_player_name)
-    if game_name == FOURFELLOWS:
-        send_to_discord(message_format.format(player, turn, game_name), FOUR_FELLOWS_WEBHOOK)
-    send_to_discord(message_format.format(player, turn, game_name), POND_WEBHOOK)
+    player = player_dictionary.get(civ_player_name)
+    if player:
+        player.send(turn, game_name)
     return "success"
 
 if __name__ == "__main__":
