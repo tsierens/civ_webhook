@@ -18,6 +18,6 @@ class Player(object):
         s = DISCORD_MESSAGE_FORMAT.format(self.discord_name, turn, game_name)
         for webhook in self.discord_webhooks:
             requests.post(webhook, json = {"content": s})
-        s = message_format.format(self.name, turn, game_name)
+        s = PUSH_FORMAT.format(self.discord_name, turn, game_name)
         if self.push_notification:
             requests.post(self.push_notification, data = s)
