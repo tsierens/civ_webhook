@@ -10,7 +10,7 @@ PUSH_FORMAT = "You're up! Turn number {} in game {}!"
 class Player(object):
     def __init__(self, discord_name = None, discord_webhooks = None, push_notification = None):
         self.discord_name = discord_name or ""
-        self.discord_webhooks = discord_servers or []
+        self.discord_webhooks = discord_webhooks or []
         self.push_notification = push_notification or ""
         
     
