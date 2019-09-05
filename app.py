@@ -20,7 +20,7 @@ NAME = "value2"
 TURN = "value3"
 UNKNOWN = "unknown"
 message_format = "{}, you're up! Turn number {} in game {}!"
-FOURFELLOWS = "Four fellows"
+FOUR_FELLOWS = "Four fellows"
 player_dictionary = {
     "tadpole":            Player(discord_name = "<@215701205710536706>", discord_webhooks = [FOUR_FELLOWS_WEBHOOK, POND_WEBHOOK]),
     "ezzy.nin":           Player(discord_name = "<@208034224522002445>", discord_webhooks = [FOUR_FELLOWS_WEBHOOK]),
