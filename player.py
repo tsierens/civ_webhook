@@ -24,6 +24,7 @@ class Player(object):
         s = DISCORD_MESSAGE_FORMAT.format(self.discord_name, turn, game_name)
         for webhook in self.discord_webhooks:
             if webhook == FOUR_FELLOWS_WEBHOOK and game_name != FOUR_FELLOWS:
+                continue
             requests.post(webhook, json = {"content": s})
         s = PUSH_FORMAT.format(turn, game_name)
         if self.push_notification:
